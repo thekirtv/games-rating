@@ -15,15 +15,15 @@ const app = express();
 connectToDatabase();
 
 app.use(
-    bodyParser.json(),
-    express.static(path.join(__dirname, "public")), 
     cors,
+    bodyParser.json(),
+    cookieParser(), 
     gameRouter, 
     categoriesRouter, 
     usersRouter,
-    apiRouter,
     pagesRouter,
-    cookieParser()
+    apiRouter,
+    express.static(path.join(__dirname, "public")),
 );
 
 app.listen(PORT, () => {
